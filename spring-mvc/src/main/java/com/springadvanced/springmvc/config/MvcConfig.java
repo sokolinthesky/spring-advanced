@@ -19,6 +19,7 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         registry.freeMarker();
+        registry.enableContentNegotiation(new PdfView());
     }
 
 }
