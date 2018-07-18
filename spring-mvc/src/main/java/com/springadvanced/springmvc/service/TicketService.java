@@ -11,5 +11,6 @@ public interface TicketService {
     List<Ticket> getBookedTicketsByEventId(Long id);
     List<Ticket> getBookedTicketsByUserId(Long id);
     void create(Ticket ticket);
+    void addTickets(List<Ticket> tickets);
     void remove(Long id);
 }

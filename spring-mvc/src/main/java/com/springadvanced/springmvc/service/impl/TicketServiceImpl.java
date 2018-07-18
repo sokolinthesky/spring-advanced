@@ -48,6 +48,11 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    public void addTickets(List<Ticket> tickets) {
+        System.out.println("Adding tickets...");
+    }
+
+    @Override
     public void remove(Long id) {
 
     }

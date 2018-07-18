@@ -37,6 +37,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void addUsers(List<User> users) {
+        System.out.println("Adding users from json file");
+    }
+
+    @Override
     public void remove(Long id) {
 
     }

@@ -62,4 +62,15 @@ public class Ticket {
         this.booked = booked;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", userId=" + userId +
+                ", eventId=" + eventId +
+                ", booked=" + booked +
+                '}';
+    }
 }
