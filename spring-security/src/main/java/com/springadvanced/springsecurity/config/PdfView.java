@@ -1,0 +1,30 @@
+package com.springadvanced.springsecurity.config;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.view.document.AbstractPdfView;
+
+import com.google.gson.Gson;
+import com.lowagie.text.Document;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfWriter;
+
+public class PdfView extends AbstractPdfView {
+
+    @Override
+    protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
+                                    HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        @SuppressWarnings("unchecked")
+        List tickets = (List) model.get("tickets");
+        String json = new Gson().toJson(tickets);
+
+        Paragraph paragraph = new Paragraph(json);
+
+        document.add(paragraph);
+    }
+}
