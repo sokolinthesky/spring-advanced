@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.Md4PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 @EnableWebSecurity
 @Configuration
@@ -51,7 +50,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .logout().logoutUrl("/logout")
-                .permitAll();
+                .permitAll()
+                .and().rememberMe().userDetailsService(customUserDetailService)
+                .key("uniqueAndSecret").tokenValiditySeconds(86400);
     }
 
     @Override
