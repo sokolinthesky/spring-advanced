@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.Md4PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 @EnableWebSecurity
 @Configuration
@@ -46,7 +47,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/load/**", "/booked-tickets-pdf/**")
                 .access("hasRole('ROLE_BOOKING_MANAGER')")
                 .and()
-                .formLogin();
+                .formLogin()
+                .and()
+                .csrf().disable()
+                .logout().logoutUrl("/logout")
+                .permitAll();
     }
 
     @Override
